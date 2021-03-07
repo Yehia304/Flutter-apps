@@ -25,7 +25,14 @@ dependencies:
     sdk: flutter
   
   flutter_inappwebview: ^4.0.0+4
-  
+  flutter_launcher_icons: ^0.8.1
+
+
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon.jpg"
   
 
 
@@ -56,6 +63,14 @@ flutter:
     - assets/images/HITHR.png
     - assets/images/logo.png
     - assets/images/banner4.jpg
+    - assets/images/HICIS.png
+    - assets/images/HITR.png
+    - assets/images/background.jpg
+    - assets/images/bookwhite.jpg
+    - assets/images/logo.jpg
+    - assets/images/151.png
+    
+
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
