@@ -22,6 +22,9 @@ class _UserTransactionsState extends State<UserTransactions> {
 
   @override
   void _addtransaction(double txAmount, String txTitle) {
+    if (txAmount <= 0 || txTitle.isEmpty) {
+      return;
+    }
     final newTx = transaction(
         id: id + 1, amount: txAmount, title: txTitle, date: DateTime.now());
 
