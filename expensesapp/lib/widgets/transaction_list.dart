@@ -9,46 +9,56 @@ class TransactionList extends StatelessWidget {
   TransactionList(this.transactions);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: transactions.map((tx) {
-        return Card(
-          child: Container(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  Container(
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 4,
-                              color: Colors.purple,
-                              style: BorderStyle.solid)),
+    return Container(
+      child: transactions.isEmpty
+          ? Column(
+              children: [
+                Text(
+                  'No Transactions added yet!',
+                  style: Theme.of(context).textTheme.title,
+                ),
+                Container(
+                    height: 200,
+                    child: Image.asset('assets/images/waiting.png'))
+              ],
+            )
+          : Column(
+              children: transactions.map((tx) {
+                return Card(
+                  child: Container(
                       padding: EdgeInsets.all(10),
-                      child: Text(
-                        '\$${tx.amount}',
-                        style: TextStyle(
-                            color: Colors.purple,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold),
+                      child: Row(
+                        children: [
+                          Container(
+                              margin: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 4,
+                                      color: Theme.of(context).primaryColor,
+                                      style: BorderStyle.solid)),
+                              padding: EdgeInsets.all(10),
+                              child: Text(
+                                '\$${tx.amount}',
+                                style: Theme.of(context).textTheme.title,
+                              )),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                tx.title,
+                                style: Theme.of(context).textTheme.title,
+                              ),
+                              Text(
+                                DateFormat.yMMMEd().format(tx.date),
+                                style: Theme.of(context).textTheme.title,
+                              ),
+                            ],
+                          ),
+                        ],
                       )),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        tx.title,
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        DateFormat.yMMMEd().format(tx.date),
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ],
-              )),
-        );
-      }).toList(),
+                );
+              }).toList(),
+            ),
     );
   }
 }
